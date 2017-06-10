@@ -4,7 +4,10 @@ const JobSchema = require('./jobs');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  username: String,
+  username: {
+    type: String
+    unique: true
+  },
   password: String,
   jobs: [JobSchema]
 });
