@@ -7,10 +7,9 @@ const JobSchema = new Schema({
   dateApplied: Date,
   company: String,
   position: String,
-  contacts: [ContactsSchema],
   lastContact: Date,
-  jobListingUrl: String,
-  userId: Number
+  contacts: [ContactsSchema],
+  jobListingUrl: String
 });
 
 module.exports = JobSchema;
