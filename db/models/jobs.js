@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const ContactsSchema = require('./contacts');
 
 const Schema = mongoose.Schema;
 
@@ -8,7 +9,8 @@ const JobSchema = new Schema({
   position: String,
   contacts: [ContactsSchema],
   lastContact: Date,
-  jobListingUrl: String
+  jobListingUrl: String,
+  userId: Number
 });
 
 module.exports = JobSchema;
