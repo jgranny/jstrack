@@ -18,6 +18,7 @@
   "homepage": "https://github.com/jgranny/jstrack#readme",
   "dependencies": {
     "express": "^4.15.3",
+    "mongoose": "^4.10.5",
     "nodemon": "^1.11.0"
   }
 }
