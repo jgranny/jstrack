@@ -1,13 +1,19 @@
 <table class="table table-striped">
   <thead class="thead-inverse">
     <tr>
-      <th>Applied</th>
-      <th>Company</th>
-      <th>Position</th>
-      <th>Last Contact</th>
-      <th>Contacts</th>
-      <th>Listing</th>
+      <th class="text-center">Applied</th>
+      <th class="text-center">Company</th>
+      <th class="text-center">Position</th>
+      <th class="text-center">Last Contact</th>
+      <th class="text-center">Contacts</th>
+      <th class="text-center">Listing</th>
     </tr>
   </thead>
   <tbody ng-repeat="job in jobData" jobs></tbody>
 </table>
+
+<div class="row no-gutters">
+  <div class="col" align="center">
+    <button type="button" class="btn btn-outline-success">Add a Job</button>
+  </div>
+</div>
