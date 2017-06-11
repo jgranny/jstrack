@@ -1,5 +1,29 @@
-jstrackApp.controller('jobs', ['$scope', function($scope) {
+jstrackApp.controller('jobs', ['$scope', '$http', '$window', function($scope, $http, $window) {
 
+  //Job data taken in from the form
+  $scope.submit = function () {
+    $scope.newJobData.dateApplied = this.dateApplied || null;
+    $scope.newJobData.company = this.company || null;
+    $scope.newJobData.position = this.position || null;
+    $scope.newJobData.jobListingUrl = this.jobListingUrl || null;
+
+    console.log($scope.newJobData)
+
+    //Send post request with new data
+    //Then redirect to home page
+    $window.location.href = '/'
+
+  }
+
+  //An object to put the new data into and send to the db
+  $scope.newJobData = {
+    dateApplied: null,
+    company: null,
+    position: null,
+    jobListingUrl: null
+  }
+
+  //Test Data
   $scope.jobData = [
     {
       dateApplied: 'May 20, 2017',
