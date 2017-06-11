@@ -1,6 +1,7 @@
-jstrackApp.directive('jobDirective', () => {
+jstrackApp.directive('jobDirective', function() {
   return {
-    restrict: 'E',
-    templateUrl: 'templates/jobTemplate'
+    replace: true,
+    restrict: 'A',
+    templateUrl: 'directives/templates/jobTemplate.html'
   }
-})
+});

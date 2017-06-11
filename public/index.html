@@ -1,51 +1,40 @@
 <!DOCTYPE html>
 <html lang="en-us" ng-app="jstrackApp">
-    <head>
-        <title>JobSearch Tracker</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-        <meta charset="UTF-8">
+  <head>
+    <title>JobSearch Tracker</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
 
-        <!-- load bootstrap and fontawesome via CDN -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+    <!-- load bootstrap and fontawesome via CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
 
-        <!-- load angular via CDN -->
-        <script src="https://code.angularjs.org/1.6.0-rc.2/angular.min.js"></script>
-        <script src="https://code.angularjs.org/1.6.0-rc.2/angular-route.min.js"></script>
-        <script src="https://code.angularjs.org/1.6.0-rc.2/angular-resource.min.js"></script>
-        <!-- <script src="routes.js"></script>
-        <script src="services.js"></script>
-        <script src="controllers.js"></script>
-        <script src="directives.js"></script> -->
-    </head>
-    <body>
-      <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-        <a class="navbar-brand" href="#">JS Track</a>
-        <div  id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Login/Logout<span class="sr-only">(current)</span></a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+    <!-- load angular via CDN -->
+    <script src="https://code.angularjs.org/1.6.0-rc.2/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.6.0-rc.2/angular-route.min.js"></script>
+    <script src="https://code.angularjs.org/1.6.0-rc.2/angular-resource.min.js"></script>
+    <script src="app.js"></script>
+    <script src="routes/routes.js"></script>
+    <!-- <script src="services.js"></script> -->
+    <script src="controllers/jobController.js"></script>
+    <script src="directives/jobDirective.js"></script>
+  </head>
 
-      <div>
-        <ul>
-          <li>Applied</li>
-          <li>Company</li>
-          <li>Position</li>
-          <li>Last Contact</li>
-          <li>Contacts</li>
-          <li>Listing</li>
-        <ul>
+  <body>
+
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <a class="navbar-brand" href="/">JS Track</a>
+      <div  id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link">Login/Logout<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
       </div>
+    </nav>
 
-      <div class="container">
-        <div ng-view></div>
-      </div>
+    <div class="container-fluid">
+      <div ng-view></div>
+    </div>
 
-      <!-- add button -->
-
-      <script src="app.js"></script>
-    </body>
+  </body>
 </html>
