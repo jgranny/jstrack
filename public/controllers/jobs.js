@@ -1,4 +1,4 @@
-jstrackApp.controller('jobController', ['$scope', function($scope) {
+jstrackApp.controller('jobs', ['$scope', function($scope) {
 
   $scope.jobData = [
     {

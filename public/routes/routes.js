@@ -3,7 +3,7 @@ jstrackApp.config(function ($routeProvider) {
 
   .when('/', {
     templateUrl: '../pages/home.html',
-    controller: 'jobController'
+    controller: 'jobs'
   })
 
 })
