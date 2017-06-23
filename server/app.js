@@ -7,7 +7,9 @@ const path = require('path');
 const app = express();
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/jstrack');
+if (process.env.NODE_ENV !== 'test') {
+  mongoose.connect('mongodb://localhost/jstrack');
+}
 
 app.use(bodyParser.json());
 

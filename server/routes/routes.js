@@ -10,7 +10,7 @@ module.exports = (app) => {
   });
 
   //User routes
-  app.post('/login', Users.login);
+  app.post('/login',/*Authentication Middleware,*/ Users.login);
 
   app.post('/user', Users.createUser);
 
