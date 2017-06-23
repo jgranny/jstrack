@@ -27,7 +27,7 @@ describe('Contacts model', () => {
   });
 
 
-  it('saves a relation between job and it\'s contacts', done => {
+  it('saves a relation between a job and it\'s contacts', done => {
     User.findOne({ username: 'Jim' })
       .populate({
         path: 'jobs',

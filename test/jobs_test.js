@@ -1,13 +1,13 @@
 const assert = require('assert');
 const Job = require('../db/models/jobs');
 
-describe('Deleting a user', () => {
+describe('Jobs model', () => {
   // let joe;
 
-  beforeEach((done) => {
+  beforeEach(done => {
   });
 
-  xit('', (done) => {
+  xit('', done => {
 
   });
 
