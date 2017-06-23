@@ -14,7 +14,7 @@ module.exports = (app) => {
 
   app.post('/user', /*Create user*/);
 
-  app.post('/user:userId', /*Edit user*/);
+  app.put('/user:userId', /*Edit user*/);
 
   app.delete('/', /*Delete user*/);
 
