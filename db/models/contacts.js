@@ -9,4 +9,6 @@ const ContactsSchema = new Schema({
   workPhone: String,
 });
 
-module.exports = ContactsSchema;
+const Contacts = mongoose.model('contact', ContactsSchema);
+
+module.exports = Contacts;

@@ -1,5 +1,5 @@
 const assert = require('assert');
-const Job = require('../models/jobs');
+const Job = require('../db/models/jobs');
 
 describe('Deleting a user', () => {
   // let joe;
@@ -7,8 +7,8 @@ describe('Deleting a user', () => {
   beforeEach((done) => {
   });
 
-  it('', (done) => {
-    
+  xit('', (done) => {
+
   });
 
 });

@@ -9,9 +9,12 @@ const UserSchema = new Schema({
     unique: true
   },
   password: String,
-  jobs: [JobSchema]
+  jobs: [{
+    type: Schema.Types.ObjectId,
+    ref: 'job'
+  }]
 });
 
 const User = mongoose.model('user', UserSchema);
 
-module.exports = UserSchema;
+module.exports = User;

@@ -8,8 +8,13 @@ const JobSchema = new Schema({
   company: String,
   position: String,
   lastContact: Date,
-  contacts: [ContactsSchema],
+  contacts: [{
+    type: Schema.Types.ObjectId,
+    ref: 'contact'
+  }],
   jobListingUrl: String
 });
 
-module.exports = JobSchema;
+const Job = mongoose.model('job', JobSchema);
+
+module.exports = Job;
