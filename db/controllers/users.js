@@ -2,7 +2,7 @@ const User = require('../models/users');
 
 module.exports = {
 
-  signIn(req, res, next) {
+  login(req, res, next) {
 
   },
 
@@ -17,5 +17,5 @@ module.exports = {
   deleteUser(req, res, next) {
 
   }
-  
+
 };

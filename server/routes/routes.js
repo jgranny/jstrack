@@ -10,30 +10,30 @@ module.exports = (app) => {
   });
 
   //User routes
-  app.get('/users:userId', /*Sign in*/);
+  app.post('/login', Users.login);
 
-  app.post('/user', /*Create user*/);
+  app.post('/user', Users.createUser);
 
-  app.put('/user:userId', /*Edit user*/);
+  app.put('/user:userId', Users.editUser);
 
-  app.delete('/', /*Delete user*/);
+  app.delete('/', Users.deleteUser);
 
   //Job routes
-  app.get('/jobs:userId', /*Get all of a user's jobs*/);
+  app.get('/jobs:userId', Jobs.listJobs);
 
-  app.post('/jobs:userId', /*Add a job to the users list*/);
+  app.post('/jobs:userId', Jobs.createJob);
 
-  app.put('/jobs:jobId', /*Edit a job*/);
+  app.put('/jobs:jobId', Jobs.editJob);
 
-  app.delete('/jobs:jobId', /*Delete a job*/);
+  app.delete('/jobs:jobId', Jobs.deleteJob);
 
   //Contact routes
-  app.get('/contacts:jobId', /*Get all of a job's contacts*/);
+  app.get('/contacts:jobId', Contacts.getContacts);
 
-  app.post('/contacts:jobId', /*Add a contact to a job*/);
+  app.post('/contacts:jobId', Contacts.createContact);
 
-  app.put('/contacts:contactId', /*Edit a contact*/);
+  app.put('/contacts:contactId', Contacts.editContact);
 
-  app.delete('/contacts:contactId', /*Delete a contact*/);
+  app.delete('/contacts:contactId', Contacts.deleteContact);
 
 };
