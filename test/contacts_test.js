@@ -75,7 +75,20 @@ describe('Contacts model', () => {
     .end((err, response) => {
       assert(response.body.name === 'James Barker');
       done();
-    })
+    });
+  });
+
+  it('DELETE request to /contacts/:contactId removes a contact', done => {
+    Contact.count().then(count => {
+      request(app)
+      .delete(`/contacts/${contact._id}`)
+      .end(() => {
+        Contact.count().then(newCount => {
+          assert(count > newCount);
+          done();
+        });
+      });
+    });
   });
 
 });

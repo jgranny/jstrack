@@ -38,7 +38,11 @@ module.exports = {
   },
 
   deleteContact(req, res, next) {
+    const contactId = req.params.contactId;
 
+    Contact.findByIdAndRemove(contactId)
+      .then(contact => res.status(204).send(contact))
+      .catch(next);
   }
 
 };
