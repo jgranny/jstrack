@@ -16,6 +16,10 @@ before((done) => {
 beforeEach(done => {
   const { users, jobs, contacts } = mongoose.connection.collections;
   users.drop(() => {
-    done();
+    jobs.drop(() => {
+      contacts.drop(() => {
+        done();
+      });
+    });
   });
 });
