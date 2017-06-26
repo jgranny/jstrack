@@ -61,4 +61,18 @@ describe('Jobs model', () => {
       });
   });
 
+  it('DELETE request to /jobs/:jobId deletes a job', done => {
+    Job.count().then(count => {
+      request(app)
+      .delete(`/jobs/${job1._id}`)
+      .end(() => {
+        Job.count().then(newCount => {
+          console.log(count, newCount);
+          assert(count > newCount);
+          done();
+        });
+      });
+    });
+  });
+
 });

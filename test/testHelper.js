@@ -14,7 +14,7 @@ before((done) => {
 
 //----------Empty out database after every test runs----------//
 beforeEach(done => {
-  const { users } = mongoose.connection.collections;
+  const { users, jobs, contacts } = mongoose.connection.collections;
   users.drop(() => {
     done();
   });

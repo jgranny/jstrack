@@ -44,6 +44,10 @@ module.exports = {
   },
 
   deleteJob(req, res, next) {
+    const jobId = req.params.jobId;
 
+    Job.findByIdAndRemove(jobId)
+      .then(job => res.status(204).send(job))
+      .catch(next);
   }
 };
