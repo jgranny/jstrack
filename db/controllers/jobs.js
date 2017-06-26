@@ -18,7 +18,17 @@ module.exports = {
   },
 
   createJob(req, res, next) {
+    const userId = req.params.userId;
+    const jobProps = req.body;
 
+    Job.create(jobProps)
+      .then(job => {
+        User.findOne({ _id: userId })
+        .then(user => {
+          user.jobs.push(job);
+          res.send(user);
+        });
+      });
   },
 
   editJob(req, res, next) {

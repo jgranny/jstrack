@@ -25,11 +25,27 @@ describe('Jobs model', () => {
 
   it('GET request to /jobs/:userId returns an array of jobs', done => {
     request(app)
-    .get(`/jobs/${joe._id}`)
-    .end((err, response) => {
-      assert(response.body.length === 2);
-      done();
-    })
+      .get(`/jobs/${joe._id}`)
+      .end((err, response) => {
+        assert(response.body.length === 2);
+        assert(response.body[0].company === 'PiedPiper');
+        assert(response.body[1].contacts[0].name === 'Lori Breem');
+        done();
+      });
+  });
+
+  it('POST request to /jobs/:userId creates a job', done => {
+    request(app)
+      .post(`/jobs/${joe._id}`)
+      .send({
+        company: 'Google',
+        position: 'Software Engineer',
+        jobListingUrl: 'www.google.com/jobs'
+      })
+      .end((err, response) => {
+        assert(response.body.jobs.length === 3);
+        done();
+      });
   });
 
 });
