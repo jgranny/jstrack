@@ -1,7 +1,6 @@
 const assert = require('assert');
 const request = require('supertest');
 const mongoose = require('mongoose');
-// const User = require('../db/models/users');
 const app = require('../server/app');
 
 const User = mongoose.model('user');

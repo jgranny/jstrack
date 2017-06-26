@@ -1,7 +1,11 @@
 const assert = require('assert');
-const Contact = require('../db/models/contacts');
-const User = require('../db/models/users');
-const Job = require('../db/models/jobs');
+const request = require('supertest');
+const mongoose = require('mongoose');
+const app = require('../server/app');
+
+const Contact = mongoose.model('contact');
+const User = mongoose.model('user');
+const Job = mongoose.model('job');
 
 describe('Contacts model', () => {
   let jim, jimsJob, contact;
