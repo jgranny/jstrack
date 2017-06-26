@@ -45,4 +45,13 @@ describe('Contacts model', () => {
       });
   });
 
+  it('GET request to /contacts/:jobId returns a job\'s contacts', done => {
+    request(app)
+    .get(`/contacts/${jimsJob._id}`)
+    .end((err, response) => {
+      assert(response.body[0].name === 'Jack Barker');
+      done();
+    });
+  });
+
 });

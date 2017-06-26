@@ -67,7 +67,6 @@ describe('Jobs model', () => {
       .delete(`/jobs/${job1._id}`)
       .end(() => {
         Job.count().then(newCount => {
-          console.log(count, newCount);
           assert(count > newCount);
           done();
         });
