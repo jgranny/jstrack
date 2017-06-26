@@ -13,11 +13,28 @@ module.exports = {
   },
 
   createContact(req, res, next) {
+    const jobId = req.params.jobId;
+    const contactProps = req.body;
 
+    Contact.create(contactProps)
+      .then(contact => {
+        Job.findById(jobId)
+          .then(job => {
+            job.contacts.push(contact);
+            res.send(job);
+          });
+      })
+      .catch(next);
   },
 
   editContact(req, res, next) {
+    const contactId = req.params.contactId;
+    const contactProps = req.body;
 
+    Contact.findByIdAndUpdate(contactId, contactProps)
+      .then(() => Contact.findById(contactId))
+      .then(contact => res.send(contact))
+      .catch(next);
   },
 
   deleteContact(req, res, next) {

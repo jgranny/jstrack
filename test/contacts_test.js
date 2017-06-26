@@ -54,4 +54,28 @@ describe('Contacts model', () => {
     });
   });
 
+  it('POST request to /contacts/:jobId add a contact to a job', done => {
+    request(app)
+    .post(`/contacts/${jimsJob._id}`)
+    .send({
+      name: 'Gavin Belson',
+      email: 'gbels@hooli.com',
+      cellPhone: '123-456-7899'
+    })
+    .end((err, response) => {
+      assert(response.body.contacts.length === 2);
+      done();
+    });
+  });
+
+  it('PUT request to /contacts/:contactId updates a contact', done => {
+    request(app)
+    .put(`/contacts/${contact._id}`)
+    .send({ name: 'James Barker' })
+    .end((err, response) => {
+      assert(response.body.name === 'James Barker');
+      done();
+    })
+  });
+
 });
