@@ -32,4 +32,19 @@ describe('User model', () => {
     });
   });
 
+  it('DELETE to /user/:userId deletes a user', done => {
+    const joe = new User({ username: 'Joe' });
+
+    joe.save().then(() => {
+      request(app)
+      .delete(`/user/${joe._id}`)
+      .end(() => {
+        User.count().then(count => {
+          assert(count === 0);
+          done();
+        });
+      });
+    });
+  });
+
 });

@@ -19,7 +19,11 @@ module.exports = {
   },
 
   deleteUser(req, res, next) {
+    const user = req.params.userId;
 
+    User.findByIdAndRemove({ _id: user })
+    .then(user => res.status(204).send(user))
+    .catch(next);
   }
 
 };

@@ -14,26 +14,26 @@ module.exports = (app) => {
 
   app.post('/user', Users.createUser);
 
-  app.put('/user:userId', Users.editUser);
+  app.put('/user/:userId', Users.editUser);
 
-  app.delete('/', Users.deleteUser);
+  app.delete('/user/:userId', Users.deleteUser);
 
   //Job routes
-  app.get('/jobs:userId', Jobs.listJobs);
+  app.get('/jobs/:userId', Jobs.listJobs);
 
-  app.post('/jobs:userId', Jobs.createJob);
+  app.post('/jobs/:userId', Jobs.createJob);
 
-  app.put('/jobs:jobId', Jobs.editJob);
+  app.put('/jobs/:jobId', Jobs.editJob);
 
-  app.delete('/jobs:jobId', Jobs.deleteJob);
+  app.delete('/jobs/:jobId', Jobs.deleteJob);
 
   //Contact routes
-  app.get('/contacts:jobId', Contacts.getContacts);
+  app.get('/contacts/:jobId', Contacts.getContacts);
 
-  app.post('/contacts:jobId', Contacts.createContact);
+  app.post('/contacts/:jobId', Contacts.createContact);
 
-  app.put('/contacts:contactId', Contacts.editContact);
+  app.put('/contacts/:contactId', Contacts.editContact);
 
-  app.delete('/contacts:contactId', Contacts.deleteContact);
+  app.delete('/contacts/:contactId', Contacts.deleteContact);
 
 };
