@@ -14,7 +14,8 @@ module.exports = {
       })
       .then(user => {
         res.send(user.jobs);
-      });
+      })
+      .catch(next);
   },
 
   createJob(req, res, next) {
@@ -28,11 +29,18 @@ module.exports = {
           user.jobs.push(job);
           res.send(user);
         });
-      });
+      })
+      .catch(next);
   },
 
   editJob(req, res, next) {
+    const jobId = req.params.jobId;
+    const jobProps = req.body;
 
+    Job.findByIdAndUpdate(jobId, jobProps)
+      .then(() => Job.findById(jobId))
+      .then(job => res.send(job))
+      .catch(next);
   },
 
   deleteJob(req, res, next) {

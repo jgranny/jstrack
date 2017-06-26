@@ -48,4 +48,17 @@ describe('Jobs model', () => {
       });
   });
 
+  it('PUT request to /jobs/:jobId edits a job', done => {
+    request(app)
+      .put(`/jobs/${job1._id}`)
+      .send({ position: 'Network Admin' })
+      .end((err, response) => {
+        Job.findById(job1._id)
+          .then(job => {
+            assert(job.position === 'Network Admin')
+            done();
+          });
+      });
+  });
+
 });
