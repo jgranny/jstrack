@@ -1,4 +1,16 @@
 const User = require('../models/users');
+const bcrypt = require('bcrypt-nodejs');
+
+let hashPassword = function (password) {
+  return new Promise((fulfill, reject) => {
+    bcrypt.hash(password, null, null, (err, hash) => {
+      if (err) {
+        return reject(err);
+      }
+      fulfill(hash);
+    });
+  });
+};
 
 module.exports = {
 
@@ -7,9 +19,11 @@ module.exports = {
   },
 
   createUser(userProps, next) {
-    User.create(userProps)
-      .then(user => res.send(user))
-      .catch(next);
+    return hashPassword(userProps.password)
+    .then(hash => {
+      return User.create({ username, password: hash })
+      .then(user => res.send(user));
+    });
   },
 
   editUser(req, res, next) {
@@ -24,14 +38,28 @@ module.exports = {
       .catch(next);
   },
 
-  getUserById() {
-
+  getUserById(userId) {
+    User.findOne({ _id: userId })
+      .then(user => user)
+      .catch(err => console.log('getUserById error: ', error));
   },
 
-  getUser() {
-
+  getUser(username) {
+    User.findOne({ username: username })
+      .then(user => user)
+      .catch(err => console.log('getUserById error: ', error));
   },
 
+  comparePassword(attempted, correct) {
+    return new Promise((fulfill, reject) => {
+      bcrypt.compare(attempted, correct, (err, res) => {
+        if (err) {
+          return reject(err);
+        }
 
+        fulfill(res);
+      });
+    });
+  }
 
 };
