@@ -6,9 +6,7 @@ module.exports = {
 
   },
 
-  createUser(req, res, next) {
-    const userProps = req.body;
-
+  createUser(userProps, next) {
     User.create(userProps)
       .then(user => res.send(user))
       .catch(next);
@@ -24,6 +22,16 @@ module.exports = {
     User.findByIdAndRemove({ _id: user })
       .then(user => res.status(204).send(user))
       .catch(next);
-  }
+  },
+
+  getUserById() {
+
+  },
+
+  getUser() {
+
+  },
+
+
 
 };

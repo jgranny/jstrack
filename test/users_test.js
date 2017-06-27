@@ -17,7 +17,7 @@ describe('User model', () => {
       });
   });
 
-  it('POST to /user creates a user', done => {
+  xit('POST to /user creates a user', done => {
     User.count().then(count => {
       request(app)
       .post('/user')
