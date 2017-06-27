@@ -40,14 +40,12 @@ module.exports = {
 
   getUserById(userId) {
     User.findOne({ _id: userId })
-      .then(user => user)
-      .catch(err => console.log('getUserById error: ', error));
+      .then(user => user);
   },
 
   getUser(username) {
     User.findOne({ username: username })
-      .then(user => user)
-      .catch(err => console.log('getUserById error: ', error));
+      .then(user => user);
   },
 
   comparePassword(attempted, correct) {

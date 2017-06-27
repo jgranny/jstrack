@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const routes = require('./routes/routes');
 const bodyParser = require('body-parser');
 const path = require('path');
+const expressSession = require('express-session');
+const passport = require('passport');
 
 const app = express();
 
@@ -10,6 +12,16 @@ mongoose.Promise = global.Promise;
 if (process.env.NODE_ENV !== 'test') {
   mongoose.connect('mongodb://localhost/jstrack');
 }
+
+app.use(expressSession({
+  secret: 'sessionSecret',
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+require('./passport/init')(passport);
 
 app.use(bodyParser.json());
 
