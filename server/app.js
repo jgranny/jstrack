@@ -25,7 +25,7 @@ require('./passport/init')(passport);
 
 app.use(bodyParser.json());
 
-routes(app);
+routes(app, passport);
 
 //Access client side files
 app.use(express.static(path.join(__dirname, '../public/')));

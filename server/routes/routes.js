@@ -3,16 +3,16 @@ const Jobs = require('../../db/controllers/jobs');
 const Contacts = require('../../db/controllers/contacts');
 const path = require('path');
 
-module.exports = (app) => {
+module.exports = (app, passport) => {
 
   app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../../public/index.html'));
   });
 
   //User routes
-  app.post('/login',/*Authentication Middleware,*/ Users.login);
+  app.post('/login', passport.authenticate('login'));
 
-  app.post('/user', Users.createUser);
+  app.post('/user', passport.authenticate('signup'));
 
   app.put('/user/:userId', Users.editUser);
 

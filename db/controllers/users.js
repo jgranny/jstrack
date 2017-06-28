@@ -18,11 +18,11 @@ module.exports = {
 
   },
 
-  createUser(userProps, next) {
-    return hashPassword(userProps.password)
+  createUser(username, password) {
+    return hashPassword(password)
     .then(hash => {
       return User.create({ username, password: hash })
-      .then(user => res.send(user));
+      .then(user => user._id);
     });
   },
 

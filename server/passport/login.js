@@ -5,8 +5,10 @@ module.exports = function(passport) {
   passport.use('login', new LocalStrategy({
     passReqToCallback: true
   },
-  function(req, username, password, done) {
-    console.log('Req body: ', req.body);
+  function(req, done) {
+    const username = req.body.username;
+    const password = req.body.password;
+
     users.getUser(username)
       .then(user => {
         if (!user) {

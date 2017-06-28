@@ -12,10 +12,7 @@ module.exports = function(passport) {
           if (user) {
             return done(null, false);
           }
-          return users.createUser({
-            req.body.username,
-            req.body.password
-          });
+          return users.createUser(req.body.username, req.body.password);
         })
         .then(id => {
           return users.getUserById(id);
