@@ -12,4 +12,14 @@ jstrackApp.config(function ($routeProvider, $locationProvider) {
     controller: 'jobs'
   })
 
+  .when('/login', {
+    templateUrl: '../pages/login.html',
+    controller: 'authentication'
+  })
+
+  .when('/signup', {
+    templateUrl: '../pages/signup.html',
+    controller: 'authentication'
+  })
+
 })
