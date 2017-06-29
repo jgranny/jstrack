@@ -10,9 +10,9 @@ module.exports = (app, passport) => {
   // });
 
   //User routes
-  app.post('/login', passport.authenticate('login'));
+  app.post('/login', passport.authenticate('login'), Users.authRes);
 
-  app.post('/user', passport.authenticate('signup'));
+  app.post('/user', passport.authenticate('signup'), Users.authRes);
 
   app.put('/user/:userId', Users.editUser);
 

@@ -14,8 +14,12 @@ let hashPassword = function (password) {
 
 module.exports = {
 
-  login(req, res, next) {
-
+  authRes(req, res, next) {
+    res.json({
+      username: req.user.username,
+      jobs: req.user.jobs,
+      _id: req.user._id
+    });
   },
 
   createUser(username, password) {
