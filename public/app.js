@@ -1,1 +1,1 @@
-const jstrackApp = angular.module('jstrackApp', ['ngRoute', 'ngResource']);
+const jstrackApp = angular.module('jstrackApp', ['ngRoute', 'ngResource', 'ngCookies']);

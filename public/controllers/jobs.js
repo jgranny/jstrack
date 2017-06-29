@@ -1,4 +1,4 @@
-jstrackApp.controller('jobs', ['$scope', '$http', '$window', function($scope, $http, $window) {
+jstrackApp.controller('jobs', ['$scope', '$http', '$window', '$cookies', function($scope, $http, $window, $cookies) {
 
   //An object to put the new data into and send to the db
   $scope.newJobData = {

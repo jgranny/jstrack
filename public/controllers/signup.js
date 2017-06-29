@@ -1,16 +1,17 @@
-jstrackApp.controller('signup', ['$scope', '$http', '$window', function($scope, $http, $window) {
+jstrackApp.controller('signup', ['$scope', '$http', '$window', '$cookies', function($scope, $http, $window, $cookies) {
   $scope.loginInfo = {
     username: null,
     password: null
   };
+
+  $cookies.userId = null;
+  $cookies.username = null;
 
   $scope.submit = function () {
     $scope.loginInfo.username = this.username || null;
     $scope.loginInfo.password = this.password || null;
 
     console.log($scope.loginInfo);
-
-    // $http.post('http://127.0.0.1:8004/user', JSON.stringify($scope.loginInfo)).then(res => console.log(res), err => console.log(err));
 
     $http({
       method: 'POST',
@@ -22,7 +23,11 @@ jstrackApp.controller('signup', ['$scope', '$http', '$window', function($scope, 
       data: JSON.stringify($scope.loginInfo)
     })
     .then(
-      res => console.log(res),
+      res => {
+        $cookie.put('userId', res.data._id);
+        $cookie.put('username', res.data.username);
+        $location.path('/')
+      },
       err => console.log(err)
     );
   };
