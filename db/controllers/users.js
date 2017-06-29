@@ -39,12 +39,12 @@ module.exports = {
   },
 
   getUserById(userId) {
-    User.findOne({ _id: userId })
+    return User.findOne({ _id: userId })
       .then(user => user);
   },
 
   getUser(username) {
-    User.findOne({ username: username })
+    return User.findOne({ username: username })
       .then(user => user);
   },
 

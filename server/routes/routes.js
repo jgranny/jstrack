@@ -5,9 +5,9 @@ const path = require('path');
 
 module.exports = (app, passport) => {
 
-  app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../public/index.html'));
-  });
+  // app.get('/', (req, res) => {
+  //   res.sendFile(path.join(__dirname, '../../public/index.html'));
+  // });
 
   //User routes
   app.post('/login', passport.authenticate('login'));

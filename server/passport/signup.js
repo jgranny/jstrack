@@ -7,7 +7,8 @@ module.exports = function(passport) {
   },
   function(req, username, password, done) {
     process.nextTick(function() {
-      users.getUser(username)
+      console.log('req: ', req.body.username);
+      users.getUser(req.body.username)
         .then(user => {
           if (user) {
             return done(null, false);
@@ -18,6 +19,7 @@ module.exports = function(passport) {
           return users.getUserById(id);
         })
         .then(newUser => {
+          console.log('newUser: ', newUser);
           done(null, newUser);
         })
         .catch(err => {

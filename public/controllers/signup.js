@@ -10,21 +10,21 @@ jstrackApp.controller('signup', ['$scope', '$http', '$window', function($scope, 
 
     console.log($scope.loginInfo);
 
-    $http.post('http://127.0.0.1:8004/user', JSON.stringify($scope.loginInfo)).then(res => console.log(res), err => console.log(err));
+    // $http.post('http://127.0.0.1:8004/user', JSON.stringify($scope.loginInfo)).then(res => console.log(res), err => console.log(err));
 
-    // $http({
-    //   method: 'POST',
-    //   url: 'http://127.0.0.1:8004/user',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   data: JSON.stringify($scope.loginInfo)
-    // })
-    // .then(
-    //   res => console.log(res),
-    //   err => console.log(err)
-    // );
+    $http({
+      method: 'POST',
+      url: 'http://127.0.0.1:8004/user',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      data: JSON.stringify($scope.loginInfo)
+    })
+    .then(
+      res => console.log(res),
+      err => console.log(err)
+    );
   };
 
 }])

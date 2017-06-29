@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const expressSession = require('express-session');
 const passport = require('passport');
+const cors = require('cors');
 
 const app = express();
 
@@ -12,6 +13,8 @@ mongoose.Promise = global.Promise;
 if (process.env.NODE_ENV !== 'test') {
   mongoose.connect('mongodb://localhost/jstrack');
 }
+
+app.use(cors());
 
 app.use(expressSession({
   secret: 'sessionSecret',
