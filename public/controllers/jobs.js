@@ -10,34 +10,31 @@ jstrackApp.controller('jobs', ['$scope', '$http', '$window', '$cookies', '$locat
 
   //Job data taken in from the form
   $scope.submit = function () {
+    const userId = $cookies.get('userId')
+
     $scope.newJobData.dateApplied = this.dateApplied || null;
     $scope.newJobData.company = this.company || null;
     $scope.newJobData.position = this.position || null;
     $scope.newJobData.jobListingUrl = this.jobListingUrl || null;
 
     console.log($scope.newJobData)
-    console.log($cookies.get('userId'));
 
-    // $scope.jobData.push($scope.newJobData);
-    // $http({
-    //   method: 'POST',
-    //   url: 'http://127.0.0.1:8004/login',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Accept': 'application/json'
-    //   },
-    //   data: JSON.stringify($scope.loginInfo)
-    // })
-    // .then(
-    //   res => {
-    //     $cookie.put('userId', res.data._id);
-    //     $cookie.put('username', res.data.username);
-    //   },
-    //   err => console.log(err)
-    // );
-    // $location.path('/')
-    //Send post request with new data
-    //Then redirect to home page
+    $http({
+      method: 'POST',
+      url: `http://127.0.0.1:8004/jobs/${userId}`,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      data: JSON.stringify($scope.loginInfo)
+    })
+    .then(
+      res => {
+        console.log('res: ', res);
+        $location.path('/')
+      },
+      err => console.log(err)
+    );
   }
 
   //Test Data

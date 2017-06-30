@@ -23,7 +23,9 @@ jstrackApp.controller('login', ['$scope', '$http', '$window', '$cookies', '$loca
         $cookies.put('username', res.data.username);
         $location.path('/')
       },
-      err => console.log(err)
+      err => {
+        console.log(err);
+      }
     );
   };
 
