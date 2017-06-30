@@ -1,4 +1,4 @@
-jstrackApp.controller('jobs', ['$scope', '$http', '$window', '$cookies', function($scope, $http, $window, $cookies) {
+jstrackApp.controller('jobs', ['$scope', '$http', '$window', '$cookies', '$location', function($scope, $http, $window, $cookies, $location) {
 
   //An object to put the new data into and send to the db
   $scope.newJobData = {
@@ -16,9 +16,26 @@ jstrackApp.controller('jobs', ['$scope', '$http', '$window', '$cookies', functio
     $scope.newJobData.jobListingUrl = this.jobListingUrl || null;
 
     console.log($scope.newJobData)
+    console.log($cookies.get('userId'));
 
-    $scope.jobData.push($scope.newJobData);
-
+    // $scope.jobData.push($scope.newJobData);
+    // $http({
+    //   method: 'POST',
+    //   url: 'http://127.0.0.1:8004/login',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'Accept': 'application/json'
+    //   },
+    //   data: JSON.stringify($scope.loginInfo)
+    // })
+    // .then(
+    //   res => {
+    //     $cookie.put('userId', res.data._id);
+    //     $cookie.put('username', res.data.username);
+    //   },
+    //   err => console.log(err)
+    // );
+    // $location.path('/')
     //Send post request with new data
     //Then redirect to home page
   }

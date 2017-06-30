@@ -1,17 +1,12 @@
-jstrackApp.controller('signup', ['$scope', '$http', '$window', '$cookies', function($scope, $http, $window, $cookies) {
+jstrackApp.controller('signup', ['$scope', '$http', '$window', '$cookies', '$location', function($scope, $http, $window, $cookies, $location) {
   $scope.loginInfo = {
     username: null,
     password: null
   };
 
-  $cookies.userId = null;
-  $cookies.username = null;
-
   $scope.submit = function () {
     $scope.loginInfo.username = this.username || null;
     $scope.loginInfo.password = this.password || null;
-
-    console.log($scope.loginInfo);
 
     $http({
       method: 'POST',
@@ -24,8 +19,8 @@ jstrackApp.controller('signup', ['$scope', '$http', '$window', '$cookies', funct
     })
     .then(
       res => {
-        $cookie.put('userId', res.data._id);
-        $cookie.put('username', res.data.username);
+        $cookies.put('userId', res.data._id);
+        $cookies.put('username', res.data.username);
         $location.path('/')
       },
       err => console.log(err)
