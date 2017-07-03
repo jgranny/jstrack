@@ -1,4 +1,4 @@
-jstrackApp.controller('signup', ['$scope', '$http', '$window', '$cookies', '$location', function($scope, $http, $window, $cookies, $location) {
+jstrackApp.controller('signup', ['$scope', '$http', '$window', '$cookies', '$location', 'jobsService', function($scope, $http, $window, $cookies, $location, jobsService) {
   $scope.loginInfo = {
     username: null,
     password: null
