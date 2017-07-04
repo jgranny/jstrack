@@ -12,13 +12,12 @@ jstrackApp.controller('jobs', ['$scope', '$http', '$window', '$cookies', '$locat
   //Job data taken in from the form
   $scope.submit = function () {
     const userId = $cookies.get('userId')
+    console.log('user id: ', userId);
 
     $scope.newJobData.dateApplied = this.dateApplied || null;
     $scope.newJobData.company = this.company || null;
     $scope.newJobData.position = this.position || null;
     $scope.newJobData.jobListingUrl = this.jobListingUrl || null;
-
-    console.log($scope.newJobData)
 
     $http({
       method: 'POST',
@@ -27,11 +26,11 @@ jstrackApp.controller('jobs', ['$scope', '$http', '$window', '$cookies', '$locat
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      data: JSON.stringify($scope.loginInfo)
+      data: JSON.stringify($scope.newJobData)
     })
     .then(
       res => {
-        console.log('res: ', res);
+        jobsService.jobs.push(res.data);
         $location.path('/')
       },
       err => console.log(err)

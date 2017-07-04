@@ -43,7 +43,7 @@ describe('Jobs model', () => {
         jobListingUrl: 'www.google.com/jobs'
       })
       .end((err, response) => {
-        assert(response.body.jobs.length === 3);
+        assert(response.body.company === 'Google');
         done();
       });
   });
