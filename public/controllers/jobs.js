@@ -1,7 +1,6 @@
 jstrackApp.controller('jobs', ['$scope', '$http', '$window', '$cookies', '$location', 'jobsService', function($scope, $http, $window, $cookies, $location, jobsService) {
 
   $scope.jobData = jobsService.jobs;
-
   //An object to put the new data into and send to the db
   $scope.newJobData = {
     dateApplied: null,
@@ -38,5 +37,6 @@ jstrackApp.controller('jobs', ['$scope', '$http', '$window', '$cookies', '$locat
       err => console.log(err)
     );
   }
+
 
 }]);
