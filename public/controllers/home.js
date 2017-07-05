@@ -6,13 +6,13 @@ jstrackApp.controller('home',['$scope', '$http', '$cookies', 'jobsService', 'req
     const userId = $cookies.get('userId');
 
     requests.getJobs(userId)
-    .then(res => {
-      $scope.jobData = [];
+      .then(res => {
+        $scope.jobData = [];
 
-      res.data.forEach(job => {
-        $scope.jobData.push(job);
+        res.data.forEach(job => {
+          $scope.jobData.push(job);
+        });
       });
-    });
   };
 
   $scope.getJobs();
