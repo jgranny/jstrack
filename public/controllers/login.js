@@ -16,18 +16,7 @@ jstrackApp.controller('login', ['$scope', '$http', '$window', '$cookies', '$loca
           $cookies.put('userId', res.data._id);
           $cookies.put('username', res.data.username);
 
-          $http({
-            method: 'GET',
-            url: `http://127.0.0.1:8004/jobs/${res.data._id}`,
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            }
-          })
-          .then(jobs => {
-            jobsService.jobs = jobs.data;
-            $location.path('/')
-          })
+          $location.path('/')
         },
         err => {
           console.log(err);
