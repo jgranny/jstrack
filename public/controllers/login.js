@@ -1,4 +1,4 @@
-jstrackApp.controller('login', ['$scope', '$http', '$window', '$cookies', '$location', 'jobsService', function($scope, $http, $window, $cookies, $location, jobsService) {
+jstrackApp.controller('login', ['$scope', '$http', '$window', '$cookies', '$location', 'jobsService', 'requests', function($scope, $http, $window, $cookies, $location, jobsService, requests) {
   $scope.loginInfo = {
     username: null,
     password: null
@@ -8,37 +8,31 @@ jstrackApp.controller('login', ['$scope', '$http', '$window', '$cookies', '$loca
     $scope.loginInfo.username = this.username || null;
     $scope.loginInfo.password = this.password || null;
 
-    $http({
-      method: 'POST',
-      url: 'http://127.0.0.1:8004/login',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      data: JSON.stringify($scope.loginInfo)
-    })
-    .then(
-      res => {
-        $cookies.put('userId', res.data._id);
-        $cookies.put('username', res.data.username);
+    let loginInfo = JSON.stringify($scope.loginInfo);
 
-        $http({
-          method: 'GET',
-          url: `http://127.0.0.1:8004/jobs/${res.data._id}`,
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          }
-        })
-        .then(jobs => {
-          jobsService.jobs = jobs.data;
-          $location.path('/')
-        })
-      },
-      err => {
-        console.log(err);
-      }
-    );
+    requests.login(loginInfo)
+      .then(
+        res => {
+          $cookies.put('userId', res.data._id);
+          $cookies.put('username', res.data.username);
+
+          $http({
+            method: 'GET',
+            url: `http://127.0.0.1:8004/jobs/${res.data._id}`,
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            }
+          })
+          .then(jobs => {
+            jobsService.jobs = jobs.data;
+            $location.path('/')
+          })
+        },
+        err => {
+          console.log(err);
+        }
+      );
   };
 
 }])
