@@ -26,8 +26,8 @@ module.exports = {
       .then(job => {
         User.findOne({ _id: userId })
         .then(user => {
-          console.log('job: ', job);
           user.jobs.push(job);
+          user.save();
           res.send(job);
         });
       })

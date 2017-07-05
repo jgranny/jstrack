@@ -37,5 +37,8 @@ jstrackApp.controller('jobs', ['$scope', '$http', '$window', '$cookies', '$locat
     );
   }
 
+  $scope.clJobs = function () {
+    console.log(jobsService.jobs);
+  }
 
 }]);
