@@ -4,7 +4,7 @@ jstrackApp.config(function ($routeProvider, $locationProvider) {
 
   .when('/', {
     templateUrl: '../pages/home.html',
-    controller: 'jobs'
+    controller: 'home'
   })
 
   .when('/new-job', {
