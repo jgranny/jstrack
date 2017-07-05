@@ -1,25 +1,19 @@
-jstrackApp.controller('home',['$scope', '$http', '$cookies', 'jobsService', function($scope, $http, $cookies, jobsService) {
+jstrackApp.controller('home',['$scope', '$http', '$cookies', 'jobsService', 'requests', function($scope, $http, $cookies, jobsService, requests) {
   $scope.jobData = jobsService.jobs;
 
+  //Get a user's jobs when the page loads
   $scope.getJobs = function() {
     const userId = $cookies.get('userId');
 
-    $http({
-      method:'GET',
-      url: `http://127.0.0.1:8004/jobs/${userId}`,
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    })
+    requests.getJobs(userId)
     .then(res => {
       $scope.jobData = [];
 
       res.data.forEach(job => {
         $scope.jobData.push(job);
-      })
-    })
-  }
+      });
+    });
+  };
 
   $scope.getJobs();
 
