@@ -13,6 +13,7 @@ jstrackApp.controller('jobs', ['$scope', '$http', '$window', '$cookies', '$locat
     $scope.newJobData.company = this.company || null;
     $scope.newJobData.position = this.position || null;
     $scope.newJobData.jobListingUrl = this.jobListingUrl || null;
+    console.log('ipad test');
 
     const userId = $cookies.get('userId')
     let jobData = JSON.stringify($scope.newJobData);
